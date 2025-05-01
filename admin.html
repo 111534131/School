@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員控制台 - 無法返回的星辰</title>
+    <style>
+        body {
+            background-color: #1a0d2b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #00ff00;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #333;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>管理員控制台</h1>
+    <p>歡迎，管理員！這裡可以管理遊戲設置。</p>
+    <button onclick="logout()">登出</button>
+
+    <script>
+        // 檢查是否為管理員
+        if (localStorage.getItem('role') !== 'admin') {
+            alert('您無權訪問此頁面！');
+            window.location.href = 'login.html';
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            localStorage.removeItem('playerId');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
